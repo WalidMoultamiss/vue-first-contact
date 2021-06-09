@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: black;
+        color: white;
+        padding: 100px 0;
+        display: flex;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: rgb(0, 29, 0);
+        margin: 20px;
+        display: inline-block;
+    }
+    .book{
+        position: relative;
+        width: 300px;
+        height: 60px;
+        border-radius: 5px;
+        background-color: rgb(87, 87, 87);
+        transition: 1s;
+    }
+    button{
+        width: 100px;
+        height: 35px;
+        border-radius: 5px;
+        color: white;
+        background-color: teal;
+        border: none;
+        cursor: pointer;
+        
+    }
+    button:hover{
+        transition: 1s;
+        transform: scale(1.1);
+    }
+    #app ul{
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #app ul li img{
+        max-width: 75px;
+        height: auto;
+        max-height: 45px;
+        border-radius: 5px;
+    }
+    #app ul li{
+        display: flex;
+        gap: 10px;
+        padding: 5px;
+        border-left: 5px solid teal;
+    }
+    .fav{
+        background-color: turquoise;
+    }
+    .xstyle{
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        position: absolute;
+        right: 3px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <button @click="showthisthing">
+            <span v-if="showthis">hide the shit</span>
+            <span v-if="!showthis">show the shit</span>
+        </button>
+        <ul>
+            <li class="book" v-for="ktab in books" :class="{fav: ktab.isFav}">
+                <span><img :src="ktab.img" :alt="ktab.title"></span>
+                <span>
+                <h3>{{ ktab.title }}</h3>
+                <p>{{ ktab.author }}</p>
+
+                </span>
+                <button class="xstyle" @click="favMe(ktab)">❤</button>
+            </li>
+        </ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
